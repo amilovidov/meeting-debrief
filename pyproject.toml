@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "meeting-debrief"
+version = "0.1.0"
+description = "Fully local meeting/interview analysis: speaker diarization, vocal microexpressions, engagement scoring, and conversation dynamics from any audio file."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Alexander Milovidov", email = "amilovidov@gmail.com"},
+]
+keywords = ["meeting", "interview", "diarization", "speech-analysis", "vocal-analysis", "engagement"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "openai-whisper>=20240930",
+    "librosa>=0.10.0",
+    "soundfile>=0.12.0",
+    "numpy>=1.24.0",
+    "torch>=2.3.0",
+    "torchaudio>=2.3.0",
+]
+
+[project.optional-dependencies]
+mps = [
+    "pyannote-audio @ git+https://github.com/davidamacey/pyannote-audio.git@gpu-optimizations",
+]
+cpu = [
+    "pyannote.audio>=3.1",
+]
+
+[project.scripts]
+meeting-debrief = "meeting_debrief.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/amilovidov/meeting-debrief"
+Repository = "https://github.com/amilovidov/meeting-debrief"
+Issues = "https://github.com/amilovidov/meeting-debrief/issues"
