@@ -144,21 +144,21 @@ The pyannote pretrained models are MIT licensed but gated on HuggingFace (free a
 The analysis framework draws from established research in psycholinguistics, conversation analysis, and affective computing:
 
 **Engagement signals:**
-- Vocabulary diversity as a predictor of conversational disengagement — Gonzales, A. L., Hancock, J. T., & Pennebaker, J. W. (2010). *Language Style Matching as a Predictor of Social Dynamics in Small Groups.* Communication Research, 37(1), 3-19.
-- Response latency as a cognitive load indicator — Brennan, S. E., & Williams, M. (1995). *The Feeling of Another's Knowing: Prosody and Filled Pauses as Cues to Listeners about the Metacognitive States of Speakers.* Journal of Memory and Language, 34(3), 383-398.
-- Filler words ("um", "uh") as markers of speech planning complexity — Clark, H. H., & Fox Tree, J. E. (2002). *Using uh and um in Spontaneous Speaking.* Cognition, 84(1), 73-111.
+- Vocabulary diversity as a predictor of conversational disengagement — Gonzales, A. L., Hancock, J. T., & Pennebaker, J. W. (2010). *Language Style Matching as a Predictor of Social Dynamics in Small Groups.* Communication Research, 37(1), 3-19. [doi:10.1177/0093650209351468](https://doi.org/10.1177/0093650209351468)
+- Response latency as a cognitive load indicator — Brennan, S. E., & Williams, M. (1995). *The Feeling of Another's Knowing: Prosody and Filled Pauses as Cues to Listeners about the Metacognitive States of Speakers.* Journal of Memory and Language, 34(3), 383-398. [doi:10.1006/jmla.1995.1017](https://doi.org/10.1006/jmla.1995.1017)
+- Filler words ("um", "uh") as markers of speech planning complexity — Clark, H. H., & Fox Tree, J. E. (2002). *Using uh and um in Spontaneous Speaking.* Cognition, 84(1), 73-111. [doi:10.1016/S0010-0277(02)00017-3](https://doi.org/10.1016/S0010-0277(02)00017-3)
 
 **Emotional modeling:**
-- Circumplex model of affect (valence + arousal dimensions) — Russell, J. A. (1980). *A Circumplex Model of Affect.* Journal of Personality and Social Psychology, 39(6), 1161-1178.
+- Circumplex model of affect (valence + arousal dimensions) — Russell, J. A. (1980). *A Circumplex Model of Affect.* Journal of Personality and Social Psychology, 39(6), 1161-1178. [doi:10.1037/h0077714](https://doi.org/10.1037/h0077714)
 
 **Conversation dynamics:**
-- Turn-taking and conversational structure — Sacks, H., Schegloff, E. A., & Jefferson, G. (1974). *A Simplest Systematics for the Organization of Turn-Taking for Conversation.* Language, 50(4), 696-735.
-- Narrative therapy and depth progression — White, M., & Epston, D. (1990). *Narrative Means to Therapeutic Ends.* W. W. Norton.
-- Motivational interviewing techniques — Miller, W. R., & Rollnick, S. (2012). *Motivational Interviewing: Helping People Change* (3rd ed.). Guilford Press.
+- Turn-taking and conversational structure — Sacks, H., Schegloff, E. A., & Jefferson, G. (1974). *A Simplest Systematics for the Organization of Turn-Taking for Conversation.* Language, 50(4), 696-735. [doi:10.2307/412243](https://doi.org/10.2307/412243)
+- Narrative therapy and depth progression — White, M., & Epston, D. (1990). *Narrative Means to Therapeutic Ends.* W. W. Norton. [ISBN: 978-0-393-70098-8](https://search.worldcat.org/title/20671744)
+- Motivational interviewing techniques — Miller, W. R., & Rollnick, S. (2012). *Motivational Interviewing: Helping People Change* (3rd ed.). Guilford Press. [ISBN: 978-1-60918-227-4](https://www.guilford.com/books/Motivational-Interviewing/Miller-Rollnick/9781609182274)
 
 **Vocal analysis:**
-- Pitch (F0) as an indicator of emotional arousal — Scherer, K. R. (2003). *Vocal Communication of Emotion: A Review of Research Paradigms.* Speech Communication, 40(1-2), 227-256.
-- Micro-pauses and hesitation phenomena — Maclay, H., & Osgood, C. E. (1959). *Hesitation Phenomena in Spontaneous English Speech.* Word, 15(1), 19-44.
+- Pitch (F0) as an indicator of emotional arousal — Scherer, K. R. (2003). *Vocal Communication of Emotion: A Review of Research Paradigms.* Speech Communication, 40(1-2), 227-256. [doi:10.1016/S0167-6393(02)00084-5](https://doi.org/10.1016/S0167-6393(02)00084-5)
+- Micro-pauses and hesitation phenomena — Maclay, H., & Osgood, C. E. (1959). *Hesitation Phenomena in Spontaneous English Speech.* Word, 15(1), 19-44. [doi:10.1080/00437956.1959.11659682](https://doi.org/10.1080/00437956.1959.11659682)
 
 **LDTMP (Layered Depth Tension Modulation Protocol):**
 The analysis framework is adapted from LDTMP, a conversational AI protocol developed by [Alexander Milovidov](https://linkedin.com/in/milovidov) for [Argo AI](https://getargoai.com), a voice-first storytelling platform. LDTMP monitors real-time engagement signals (response latency, vocabulary diversity, emotional valence, topic coherence) to adapt conversation depth through six progressive layers — from icebreaker to emotional saturation to reentry. The protocol uses deterministic code for phase transitions while the LLM handles natural language generation within each phase.
