@@ -24,7 +24,7 @@ Drop in any audio recording of a meeting or interview. Get back:
 
 ## Background
 
-Built from a real-world conversational AI engagement framework (LDTMP) that monitors behavioral signals during voice conversations. The same signals that make an AI conversation feel human — response latency, vocabulary diversity, emotional keywords, pacing — turn out to be exactly the signals that reveal how a meeting actually went.
+Built from a production conversational AI engagement framework ([LDTMP — Layered Depth Tension Modulation Protocol](https://github.com/amilovidov/meeting-debrief#research-foundations)) that monitors behavioral signals during voice conversations. The same signals that make an AI conversation feel human — response latency, vocabulary diversity, emotional keywords, pacing — turn out to be exactly the signals that reveal how a meeting actually went.
 
 ## Install
 
@@ -138,6 +138,32 @@ All dependencies are permissive open-source (MIT/BSD/ISC):
 | [NumPy](https://github.com/numpy/numpy) | BSD-3 | Numerical computation |
 
 The pyannote pretrained models are MIT licensed but gated on HuggingFace (free account required).
+
+## Research Foundations
+
+The analysis framework draws from established research in psycholinguistics, conversation analysis, and affective computing:
+
+**Engagement signals:**
+- Vocabulary diversity as a predictor of conversational disengagement — Gonzales, A. L., Hancock, J. T., & Pennebaker, J. W. (2010). *Language Style Matching as a Predictor of Social Dynamics in Small Groups.* Communication Research, 37(1), 3-19.
+- Response latency as a cognitive load indicator — Brennan, S. E., & Williams, M. (1995). *The Feeling of Another's Knowing: Prosody and Filled Pauses as Cues to Listeners about the Metacognitive States of Speakers.* Journal of Memory and Language, 34(3), 383-398.
+- Filler words ("um", "uh") as markers of speech planning complexity — Clark, H. H., & Fox Tree, J. E. (2002). *Using uh and um in Spontaneous Speaking.* Cognition, 84(1), 73-111.
+
+**Emotional modeling:**
+- Circumplex model of affect (valence + arousal dimensions) — Russell, J. A. (1980). *A Circumplex Model of Affect.* Journal of Personality and Social Psychology, 39(6), 1161-1178.
+
+**Conversation dynamics:**
+- Turn-taking and conversational structure — Sacks, H., Schegloff, E. A., & Jefferson, G. (1974). *A Simplest Systematics for the Organization of Turn-Taking for Conversation.* Language, 50(4), 696-735.
+- Narrative therapy and depth progression — White, M., & Epston, D. (1990). *Narrative Means to Therapeutic Ends.* W. W. Norton.
+- Motivational interviewing techniques — Miller, W. R., & Rollnick, S. (2012). *Motivational Interviewing: Helping People Change* (3rd ed.). Guilford Press.
+
+**Vocal analysis:**
+- Pitch (F0) as an indicator of emotional arousal — Scherer, K. R. (2003). *Vocal Communication of Emotion: A Review of Research Paradigms.* Speech Communication, 40(1-2), 227-256.
+- Micro-pauses and hesitation phenomena — Maclay, H., & Osgood, C. E. (1959). *Hesitation Phenomena in Spontaneous English Speech.* Word, 15(1), 19-44.
+
+**LDTMP (Layered Depth Tension Modulation Protocol):**
+The analysis framework is adapted from LDTMP, a proprietary conversational AI protocol designed by [Alexander Milovidov](https://linkedin.com/in/milovidov) for [Argo AI](https://getargoai.com), a voice-first storytelling platform. LDTMP monitors real-time engagement signals (response latency, vocabulary diversity, emotional valence, topic coherence) to adapt conversation depth through six progressive layers — from icebreaker to emotional saturation to reentry. The protocol uses deterministic code for phase transitions while the LLM handles natural language generation within each phase.
+
+The key insight that motivated this tool: the same signals LDTMP uses to make AI conversations feel human are the signals that reveal how any conversation — meeting, interview, coaching session — actually went.
 
 ## License
 

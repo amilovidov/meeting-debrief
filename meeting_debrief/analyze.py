@@ -1,16 +1,19 @@
 """Multi-layer conversation analysis inspired by the LDTMP engagement framework.
 
+Based on research in psycholinguistics, conversation analysis, and affective computing.
+See README.md for full citations.
+
 Layers:
 1. Talk ratio per speaker per time window
-2. Filler words (cognitive load)
-3. Vocabulary diversity (engagement signal)
-4. Conviction vs hedging keywords
+2. Filler words — cognitive load indicator (Clark & Fox Tree, 2002)
+3. Vocabulary diversity — engagement/disengagement signal (Gonzales et al., 2010)
+4. Conviction vs hedging keywords — confidence signal
 5. Response quality (minimal/moderate/detailed)
-6. Per-speaker pitch (F0) and expressiveness
-7. Response latency between speakers
-8. Turn duration patterns
+6. Per-speaker pitch (F0) and expressiveness — emotional arousal (Scherer, 2003)
+7. Response latency between speakers — cognitive load (Brennan & Williams, 1995)
+8. Turn duration patterns — conversational structure (Sacks et al., 1974)
 9. Vocal energy per speaker (RMS)
-10. Micro-pauses within turns (hesitation)
+10. Micro-pauses within turns — hesitation phenomena (Maclay & Osgood, 1959)
 11. Engagement signals from shorter-speaking participant
 """
 
