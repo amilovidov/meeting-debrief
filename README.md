@@ -161,7 +161,7 @@ The analysis framework draws from established research in psycholinguistics, con
 - Micro-pauses and hesitation phenomena — Maclay, H., & Osgood, C. E. (1959). *Hesitation Phenomena in Spontaneous English Speech.* Word, 15(1), 19-44.
 
 **LDTMP (Layered Depth Tension Modulation Protocol):**
-The analysis framework is adapted from LDTMP, a proprietary conversational AI protocol designed by [Alexander Milovidov](https://linkedin.com/in/milovidov) for [Argo AI](https://getargoai.com), a voice-first storytelling platform. LDTMP monitors real-time engagement signals (response latency, vocabulary diversity, emotional valence, topic coherence) to adapt conversation depth through six progressive layers — from icebreaker to emotional saturation to reentry. The protocol uses deterministic code for phase transitions while the LLM handles natural language generation within each phase.
+The analysis framework is adapted from LDTMP, a conversational AI protocol developed by [Alexander Milovidov](https://linkedin.com/in/milovidov) for [Argo AI](https://getargoai.com), a voice-first storytelling platform. LDTMP monitors real-time engagement signals (response latency, vocabulary diversity, emotional valence, topic coherence) to adapt conversation depth through six progressive layers — from icebreaker to emotional saturation to reentry. The protocol uses deterministic code for phase transitions while the LLM handles natural language generation within each phase.
 
 The key insight that motivated this tool: the same signals LDTMP uses to make AI conversations feel human are the signals that reveal how any conversation — meeting, interview, coaching session — actually went.
 
