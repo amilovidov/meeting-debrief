@@ -90,14 +90,19 @@ output/
 
 ## Performance
 
-Tested on Apple M4 (iPad Pro / Mac):
+Tested on 70-minute interview recording, Apple M4:
 
-| Audio Length | Diarization | Full Pipeline | Device |
-|---|---|---|---|
-| 5 min | 17s | ~1 min | M4 MPS |
-| 70 min | 181s (~3 min) | ~10 min | M4 MPS |
+| Stage | Time | Device |
+|---|---|---|
+| Audio conversion (ffmpeg) | 2s | CPU |
+| Transcription (Whisper base) | ~5 min | CPU |
+| Speaker diarization (pyannote) | 181s (3 min) | M4 MPS |
+| Analysis (12 layers) | ~90s | CPU |
+| **Total** | **~10 min** | **M4 MPS** |
 
-Diarization runs at 0.04x realtime on Apple Silicon MPS. The bottleneck is Whisper transcription — use `--whisper-model base` for speed or `--whisper-model medium` for accuracy.
+Diarization runs at 0.04x realtime on Apple Silicon MPS. On CPU it's ~5-10x slower.
+
+Whisper transcription is the bottleneck. `--whisper-model base` for speed, `--whisper-model medium` for accuracy.
 
 ## How it works
 
@@ -115,15 +120,25 @@ Speaker-Separated Segments
 Multi-Layer Analysis Report
 ```
 
-### Analysis layers
+### Analysis layers (12)
 
-The analysis framework is inspired by research into what makes conversations feel human vs mechanical. The same signals that an AI conversation engine monitors to adapt its behavior in real time are the signals that reveal conversation dynamics after the fact:
+The analysis framework is adapted from the LDTMP conversational engagement framework. The same signals that an AI conversation engine monitors to adapt in real time are the signals that reveal how any conversation went:
 
-1. **Vocabulary diversity** drops 2-3 turns before someone disengages — it's an early warning system
-2. **Response latency** (long pauses) often means processing, not disinterest — but unannounced pauses read as uncertainty
-3. **Conviction/hedging ratio** reveals confidence independent of content — you can say the right thing with hedging words and still sound unsure
-4. **Micro-pauses** within turns distinguish rehearsed material (fluent) from improvised answers (hesitant)
-5. **Pitch expressiveness** separates animated engagement from monotone delivery
+**Transcript-based:**
+1. **Talk ratio** per speaker over time — who dominates, when does it balance?
+2. **Filler words** per window — cognitive load indicator (Clark & Fox Tree, 2002)
+3. **Vocabulary diversity** — drops 2-3 turns before disengagement (Gonzales et al., 2010)
+4. **Conviction vs hedging** — confidence independent of content
+5. **Response quality** — minimal (<20 words) / moderate / detailed (50+)
+6. **Verbal tic detection** — repeated filler patterns across full conversation
+7. **Answer opener analysis** — how does each speaker start their responses?
+
+**Audio-based (per-speaker, requires diarization):**
+8. **Pitch (F0)** — excitement, stress, expressiveness (Scherer, 2003)
+9. **Response latency** — time between speakers, hesitation moments (Brennan & Williams, 1995)
+10. **Turn duration** — monologue vs dialogue patterns (Sacks et al., 1974)
+11. **Vocal energy (RMS)** — who's louder, when
+12. **Micro-pauses** within turns — rehearsed vs improvised (Maclay & Osgood, 1959)
 
 ## Requirements
 
