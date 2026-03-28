@@ -77,6 +77,23 @@ def main():
     else:
         print("\n[3/4] Skipping diarization", flush=True)
 
+    # Step 3b: Merge transcript with diarization
+    if diarization:
+        print("\n  Merging transcript with speaker labels...", flush=True)
+        from meeting_debrief.merge import merge_transcript_speakers
+        merged = merge_transcript_speakers(segments, diarization)
+
+        merged_path = os.path.join(output_dir, f"{basename}_transcript_speakers.txt")
+        with open(merged_path, "w") as f:
+            for seg in merged:
+                mins = int(seg["start"] // 60)
+                secs = int(seg["start"] % 60)
+                f.write(f"[{mins:02d}:{secs:02d}] {seg['speaker']}: {seg['text']}\n")
+        print(f"  Saved: {merged_path}", flush=True)
+
+        # Also update segments with speaker info for analysis
+        segments = merged
+
     # Step 4: Analyze
     print("\n[4/4] Analyzing...", flush=True)
     from meeting_debrief.analyze import analyze_transcript

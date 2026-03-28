@@ -82,10 +82,18 @@ meeting-debrief recording.m4a --device cpu
 
 ```
 output/
-├── recording_transcript.txt      # Timestamped transcript
-├── recording_diarization.json    # Speaker segments with timestamps
-├── recording_analysis.json       # Raw analysis data
-└── recording_report.md           # Human-readable analysis report
+├── recording_transcript.txt           # Timestamped transcript
+├── recording_transcript_speakers.txt  # Transcript with speaker labels
+├── recording_diarization.json         # Speaker segments with timestamps
+├── recording_analysis.json            # Raw analysis data
+└── recording_report.md                # Human-readable analysis report
+```
+
+The speaker-labeled transcript looks like:
+```
+[00:00] Speaker A: Hey, how's it going?
+[00:03] Speaker B: Good, nice to meet you.
+[00:05] Speaker A: So I've been working on this project...
 ```
 
 ## Performance
