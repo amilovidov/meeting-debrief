@@ -44,7 +44,7 @@ def main():
     print("\n[2/4] Transcribing with Whisper ({})...".format(args.whisper_model), flush=True)
     from meeting_debrief.transcribe import transcribe
     t0 = time.time()
-    segments = transcribe(wav_path, model=args.whisper_model, language=args.language)
+    segments = transcribe(wav_path, model=args.whisper_model, language=args.language, device=args.device)
     print(f"  {len(segments)} segments in {time.time() - t0:.0f}s", flush=True)
 
     # Save transcript

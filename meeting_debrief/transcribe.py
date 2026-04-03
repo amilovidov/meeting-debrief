@@ -1,52 +1,51 @@
 """Local transcription using OpenAI Whisper."""
 
 import os
+import sys
 import tempfile
 import subprocess
 from pathlib import Path
 
 
-def transcribe(audio_path: str, model: str = "base", language: str = "en") -> list[dict]:
-    """Transcribe audio using local Whisper model.
+def _select_device(preferred: str = "auto") -> str:
+    """Select compute device: mps > cuda > cpu."""
+    import torch
+    if preferred != "auto":
+        return preferred
+    if torch.backends.mps.is_available():
+        return "mps"
+    if torch.cuda.is_available():
+        return "cuda"
+    return "cpu"
 
+
+def transcribe(audio_path: str, model: str = "base", language: str = "en", device: str = "auto") -> list[dict]:
+    """Transcribe audio using local Whisper model via Python API.
+
+    Uses MPS on Apple Silicon, CUDA on NVIDIA, CPU as fallback.
     Returns list of segments with start, end, text.
     """
-    audio_path = str(Path(audio_path).resolve())
+    import whisper
 
-    with tempfile.TemporaryDirectory() as tmpdir:
-        result = subprocess.run(
-            [
-                "whisper", audio_path,
-                "--model", model,
-                "--language", language,
-                "--output_format", "json",
-                "--output_dir", tmpdir,
-            ],
-            capture_output=True,
-            text=True,
-        )
+    device = _select_device(device)
+    print(f"  Whisper device: {device}", file=sys.stderr)
 
-        if result.returncode != 0:
-            raise RuntimeError(f"Whisper failed: {result.stderr}")
+    whisper_model = whisper.load_model(model, device=device)
+    result = whisper_model.transcribe(
+        str(Path(audio_path).resolve()),
+        language=language,
+        verbose=False,
+    )
 
-        # Find the output JSON
-        import json
-        json_files = list(Path(tmpdir).glob("*.json"))
-        if not json_files:
-            raise RuntimeError("Whisper produced no output")
+    segments = []
+    for seg in result.get("segments", []):
+        segments.append({
+            "start": round(seg["start"], 2),
+            "end": round(seg["end"], 2),
+            "text": seg["text"].strip(),
+        })
 
-        with open(json_files[0]) as f:
-            data = json.load(f)
-
-        segments = []
-        for seg in data.get("segments", []):
-            segments.append({
-                "start": round(seg["start"], 2),
-                "end": round(seg["end"], 2),
-                "text": seg["text"].strip(),
-            })
-
-        return segments
+    return segments
 
 
 def convert_to_wav(audio_path: str, output_path: str = None, sr: int = 16000) -> str:
