@@ -45,7 +45,14 @@ def diarize(
         )
 
     from huggingface_hub import login
-    login(token=token, add_to_git_credential=False)
+    try:
+        login(token=token, add_to_git_credential=False)
+    except Exception as exc:
+        # Offline / network-restricted environments (HF_HUB_OFFLINE=1, or an
+        # intercepting proxy) make the online `whoami` validation fail. The
+        # pretrained pipeline loads from the local HF cache regardless, so a
+        # failed login must not abort diarization when the models are cached.
+        print(f"  (skipping HF login: {exc}; using cached models)", flush=True)
 
     # Resolve device
     if device == "auto":

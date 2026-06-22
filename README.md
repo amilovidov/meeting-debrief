@@ -110,7 +110,7 @@ Tested on 70-minute interview recording, Apple M4:
 
 Diarization runs at 0.04x realtime on Apple Silicon MPS. On CPU it's ~5-10x slower.
 
-Whisper transcription is the bottleneck. `--whisper-model base` for speed, `--whisper-model medium` for accuracy.
+Whisper transcription is the bottleneck. Default is `large-v3` for best accuracy. Use `--whisper-model base` for speed when transcript quality is less critical.
 
 ## How it works
 
