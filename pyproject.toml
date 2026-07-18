@@ -46,9 +46,19 @@ cpu = [
 openai = [
     "openai>=1.50.0",
 ]
+# Meeting-capture pipeline: Recall.ai bot dispatch (httpx), LLM feature-request
+# extraction (openai), delivery to GitHub issues + Mentat MCP (mcp).
+capture = [
+    "openai>=1.50.0",
+    "httpx>=0.27.0",
+    "mcp>=1.27.0",
+]
 
 [project.scripts]
 meeting-debrief = "meeting_debrief.cli:main"
+meeting-debrief-extract = "meeting_debrief.extract:main"
+meeting-debrief-bot = "meeting_debrief.meet_bot:main"
+meeting-debrief-deliver = "meeting_debrief.deliver:main"
 
 [project.urls]
 Homepage = "https://github.com/amilovidov/meeting-debrief"
