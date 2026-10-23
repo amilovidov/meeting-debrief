@@ -24,7 +24,7 @@ Drop in any audio recording of a meeting or interview. Get back:
 
 ## Background
 
-Built from a production conversational AI engagement framework ([LDTMP — Layered Depth Tension Modulation Protocol](https://github.com/amilovidov/meeting-debrief#research-foundations)) that monitors behavioral signals during voice conversations. The same signals that make an AI conversation feel human — response latency, vocabulary diversity, emotional keywords, pacing — turn out to be exactly the signals that reveal how a meeting actually went.
+Built from a production conversational AI engagement framework ([LDTMP, the Layered Depth Tension Modulation Protocol](https://github.com/amilovidov/ldtmp)) that monitors behavioral signals during voice conversations. The same signals that make an AI conversation feel human — response latency, vocabulary diversity, emotional keywords, pacing — turn out to be exactly the signals that reveal how a meeting actually went.
 
 ## Install
 
@@ -184,7 +184,7 @@ The analysis framework draws from established research in psycholinguistics, con
 - Micro-pauses and hesitation phenomena — Maclay, H., & Osgood, C. E. (1959). *Hesitation Phenomena in Spontaneous English Speech.* Word, 15(1), 19-44. [doi:10.1080/00437956.1959.11659682](https://doi.org/10.1080/00437956.1959.11659682)
 
 **LDTMP (Layered Depth Tension Modulation Protocol):**
-The analysis framework is adapted from LDTMP, a conversational AI protocol developed by [Alexander Milovidov](https://linkedin.com/in/milovidov) for [Argo AI](https://getargoai.com), a voice-first storytelling platform. LDTMP monitors real-time engagement signals (response latency, vocabulary diversity, emotional valence, topic coherence) to adapt conversation depth through six progressive layers — from icebreaker to emotional saturation to reentry. The protocol uses deterministic code for phase transitions while the LLM handles natural language generation within each phase.
+The analysis framework is adapted from [LDTMP](https://github.com/amilovidov/ldtmp), a conversational AI protocol developed by [Alexander Milovidov](https://linkedin.com/in/milovidov) for a voice-first storytelling app. LDTMP monitors real-time engagement signals (response latency, vocabulary diversity, emotional valence, topic coherence) to adapt conversation depth through six progressive layers, from icebreaker to emotional saturation to reentry. The protocol uses deterministic code for phase transitions while the LLM handles natural language generation within each phase.
 
 The key insight that motivated this tool: the same signals LDTMP uses to make AI conversations feel human are the signals that reveal how any conversation — meeting, interview, coaching session — actually went.
 
