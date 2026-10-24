@@ -11,7 +11,7 @@ Drop in any audio recording of a meeting or interview. Get back:
 - **Speaker-separated transcript** with timestamps
 - **Talk ratio** per speaker over time
 - **Filler word tracking** (cognitive load signal)
-- **Vocabulary diversity** (engagement signal — drops before disengagement)
+- **Vocabulary diversity** (engagement signal)
 - **Conviction vs hedging ratio** (confidence signal)
 - **Per-speaker pitch analysis** (excitement, stress, expressiveness)
 - **Response latency** (hesitation moments between speakers)
@@ -24,7 +24,7 @@ Drop in any audio recording of a meeting or interview. Get back:
 
 ## Background
 
-Built from a production conversational AI engagement framework ([LDTMP — Layered Depth Tension Modulation Protocol](https://github.com/amilovidov/meeting-debrief#research-foundations)) that monitors behavioral signals during voice conversations. The same signals that make an AI conversation feel human — response latency, vocabulary diversity, emotional keywords, pacing — turn out to be exactly the signals that reveal how a meeting actually went.
+Built from a production conversational AI engagement framework ([LDTMP, the Layered Depth Tension Modulation Protocol](https://github.com/amilovidov/ldtmp)) that monitors behavioral signals during voice conversations. The same signals that make an AI conversation feel human — response latency, vocabulary diversity, emotional keywords, pacing — turn out to be exactly the signals that reveal how a meeting actually went.
 
 ## Install
 
@@ -135,7 +135,7 @@ The analysis framework is adapted from the LDTMP conversational engagement frame
 **Transcript-based:**
 1. **Talk ratio** per speaker over time — who dominates, when does it balance?
 2. **Filler words** per window — cognitive load indicator (Clark & Fox Tree, 2002)
-3. **Vocabulary diversity** — drops 2-3 turns before disengagement (Gonzales et al., 2010)
+3. **Vocabulary diversity** — unique words per response, one of the LDTMP engagement signals (a heuristic, not yet validated)
 4. **Conviction vs hedging** — confidence independent of content
 5. **Response quality** — minimal (<20 words) / moderate / detailed (50+)
 6. **Verbal tic detection** — repeated filler patterns across full conversation
@@ -167,16 +167,15 @@ The pyannote pretrained models are MIT licensed but gated on HuggingFace (free a
 The analysis framework draws from established research in psycholinguistics, conversation analysis, and affective computing:
 
 **Engagement signals:**
-- Vocabulary diversity as a predictor of conversational disengagement — Gonzales, A. L., Hancock, J. T., & Pennebaker, J. W. (2010). *Language Style Matching as a Predictor of Social Dynamics in Small Groups.* Communication Research, 37(1), 3-19. [doi:10.1177/0093650209351468](https://doi.org/10.1177/0093650209351468)
-- Response latency as a cognitive load indicator — Brennan, S. E., & Williams, M. (1995). *The Feeling of Another's Knowing: Prosody and Filled Pauses as Cues to Listeners about the Metacognitive States of Speakers.* Journal of Memory and Language, 34(3), 383-398. [doi:10.1006/jmla.1995.1017](https://doi.org/10.1006/jmla.1995.1017)
-- Filler words ("um", "uh") as markers of speech planning complexity — Clark, H. H., & Fox Tree, J. E. (2002). *Using uh and um in Spontaneous Speaking.* Cognition, 84(1), 73-111. [doi:10.1016/S0010-0277(02)00017-3](https://doi.org/10.1016/S0010-0277(02)00017-3)
+- Response latency as a cue to the speaker's state: listeners judge whether a speaker knows an answer, and longer latency lowers that judgment — Brennan, S. E., & Williams, M. (1995). *The Feeling of Another's Knowing: Prosody and Filled Pauses as Cues to Listeners about the Metacognitive States of Speakers.* Journal of Memory and Language, 34(3), 383-398. [doi:10.1006/jmla.1995.1017](https://doi.org/10.1006/jmla.1995.1017)
+- Filler words ("uh", "um") as signals that a minor or major delay in speaking follows — Clark, H. H., & Fox Tree, J. E. (2002). *Using uh and um in Spontaneous Speaking.* Cognition, 84(1), 73-111. [doi:10.1016/S0010-0277(02)00017-3](https://doi.org/10.1016/S0010-0277(02)00017-3)
 
 **Emotional modeling:**
 - Circumplex model of affect (valence + arousal dimensions) — Russell, J. A. (1980). *A Circumplex Model of Affect.* Journal of Personality and Social Psychology, 39(6), 1161-1178. [doi:10.1037/h0077714](https://doi.org/10.1037/h0077714)
 
 **Conversation dynamics:**
 - Turn-taking and conversational structure — Sacks, H., Schegloff, E. A., & Jefferson, G. (1974). *A Simplest Systematics for the Organization of Turn-Taking for Conversation.* Language, 50(4), 696-735. [doi:10.2307/412243](https://doi.org/10.2307/412243)
-- Narrative therapy and depth progression — White, M., & Epston, D. (1990). *Narrative Means to Therapeutic Ends.* W. W. Norton. [ISBN: 978-0-393-70098-8](https://search.worldcat.org/title/20671744)
+- Narrative therapy: re-authoring a life story, including experiences the dominant story leaves out — White, M., & Epston, D. (1990). *Narrative Means to Therapeutic Ends.* W. W. Norton. [ISBN: 978-0-393-70098-5](https://search.worldcat.org/title/20671744)
 - Motivational interviewing techniques — Miller, W. R., & Rollnick, S. (2012). *Motivational Interviewing: Helping People Change* (3rd ed.). Guilford Press. [ISBN: 978-1-60918-227-4](https://www.guilford.com/books/Motivational-Interviewing/Miller-Rollnick/9781609182274)
 
 **Vocal analysis:**
@@ -184,7 +183,7 @@ The analysis framework draws from established research in psycholinguistics, con
 - Micro-pauses and hesitation phenomena — Maclay, H., & Osgood, C. E. (1959). *Hesitation Phenomena in Spontaneous English Speech.* Word, 15(1), 19-44. [doi:10.1080/00437956.1959.11659682](https://doi.org/10.1080/00437956.1959.11659682)
 
 **LDTMP (Layered Depth Tension Modulation Protocol):**
-The analysis framework is adapted from LDTMP, a conversational AI protocol developed by [Alexander Milovidov](https://linkedin.com/in/milovidov) for [Argo AI](https://getargoai.com), a voice-first storytelling platform. LDTMP monitors real-time engagement signals (response latency, vocabulary diversity, emotional valence, topic coherence) to adapt conversation depth through six progressive layers — from icebreaker to emotional saturation to reentry. The protocol uses deterministic code for phase transitions while the LLM handles natural language generation within each phase.
+The analysis framework is adapted from [LDTMP](https://github.com/amilovidov/ldtmp), a conversational AI protocol developed by [Alexander Milovidov](https://linkedin.com/in/milovidov) for a voice-first storytelling app. LDTMP monitors real-time engagement signals (response length, response latency, vocabulary diversity and emotional expression) to adapt conversation depth through six progressive layers, from icebreaker to emotional saturation to reentry. The protocol uses deterministic code for phase transitions while the LLM handles natural language generation within each phase.
 
 The key insight that motivated this tool: the same signals LDTMP uses to make AI conversations feel human are the signals that reveal how any conversation — meeting, interview, coaching session — actually went.
 
